@@ -4,7 +4,7 @@ import Activity from '/scripts/activity.js';
 import Contact from '/scripts/contact.js';
 
 (() => {
-  gsap.registerPlugin(CustomEase, Flip);
+  gsap.registerPlugin(CustomEase);
 
   const lenis = new Lenis();
 
