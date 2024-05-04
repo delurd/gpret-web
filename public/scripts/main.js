@@ -60,9 +60,6 @@ const Activity = () => {
     });
 
     item.addEventListener('mouseleave', () => {
-      // itemsBg[idx].style = '';
-      // item.style = '';
-
       gsap.to(btnBg, 1, {
         x: 0,
         y: 0,
@@ -152,8 +149,6 @@ const Home = () => {
   const char = document.querySelector('.char');
   const circle2 = document.querySelector('.char .c-2');
 
-  // gsap.from(contentCard, { y: "100%", duration: 1, ease: "power3.out" })
-
   const onUpAction = () => {
     contentCard.style = 'transform: translate(-50%, -60dvh)';
     backTitle.style = 'transform: translate(-50%, -20vh)';
@@ -173,13 +168,11 @@ const Home = () => {
   };
 
   body.addEventListener('keyup', (e) => {
-    // console.log(e);
     if (e.key == 'ArrowDown') onUpAction();
     if (e.key == 'ArrowUp') onDownAction();
   });
 
   home.addEventListener('wheel', (e) => {
-    // console.log(e.deltaY);
     if (e.deltaY > 10) onUpAction();
     if (e.deltaY < -10) onDownAction();
   });
@@ -203,13 +196,6 @@ const Home = () => {
     focusRect.style = `transform : translate(${
       (e.clientX / window.innerWidth) * 100
     }px , ${(e.clientY / window.innerHeight) * 100}px)`;
-    // gsap.to(".focus-rect", {
-    //   x: (e.clientX / window.innerWidth) * 100,
-    //   y: (e.clientY / window.innerHeight) * 100,
-    //   duration: 3,
-    //   ease: "power4.out"
-    // })
-    // cursor.style = `transform: translate(${e.clientX-20}px, ${e.clientY-20}px)`
   });
 };
 
@@ -275,8 +261,12 @@ const Structure = () => {
 
   ////NAVIGATION
   // const meteringNavigation = () => {
-  const metnavItems = document.querySelectorAll('.metnav-item');
-  const metnavTitle = document.querySelector('.metnav-title');
+  const metnavItems = document.querySelectorAll('.metnav-item'),
+    metnavTitle = document.querySelector('.metnav-title'),
+    metnavContainer = document.querySelector('.metering-nav'),
+    metnavArrow = document.querySelector('.metnav-arrow');
+
+  let activeNavPos = 0;
 
   const getActiveNavPos = () => {
     let posX = 0;
@@ -284,7 +274,15 @@ const Structure = () => {
       if (item.classList.contains('active')) posX = item.offsetLeft;
     });
 
+    activeNavPos = posX;
     return posX;
+  };
+
+  const animateMetteringArrow = (e) => {
+    const metnavContainerWidth = metnavContainer.scrollWidth;
+    const cursorPos = e.layerX + metnavContainerWidth / 2;
+
+    metnavArrow.style.transform = `translate3d(${cursorPos - 8}px,0,0)`;
   };
 
   metnavItems.forEach((item) => {
@@ -294,40 +292,21 @@ const Structure = () => {
       });
 
       item.classList.add('active');
-
-      getActiveNavPos();
     });
 
     item.addEventListener('mouseover', () => {
       item.style = `max-width: ${item.scrollWidth}px`;
-
-      // const getItemValue = item.childNodes[0].childNodes[0].nodeValue
-      // metnavTitle.childNodes[0] && metnavTitle.childNodes[0].remove()
-      // metnavTitle.append(getItemValue)
     });
 
     item.addEventListener('mouseleave', () => {
       item.style = '';
-
-      // metnavTitle.childNodes[0] && metnavTitle.childNodes[0].remove()
     });
   });
 
-  const metnavContainer = document.querySelector('.metering-nav');
-  const metnavArrow = document.querySelector('.metnav-arrow');
-  metnavArrow.style = `transform: translate3d(${
-    getActiveNavPos() - 8
-  }px,0,0); opacity: 1`;
-
-  metnavContainer.addEventListener('mousemove', (e) => {
-    const metnavContainerWidth = metnavContainer.scrollWidth;
-    const cursorPos = e.layerX + metnavContainerWidth / 2;
-    // console.log();
-    metnavArrow.style.transform = `translate3d(${cursorPos - 8}px,0,0)`;
-  });
+  metnavContainer.addEventListener('mousemove', animateMetteringArrow);
 
   metnavContainer.addEventListener('mouseleave', () => {
-    metnavArrow.style.transform = `translate3d(${getActiveNavPos() - 8}px,0,0)`;
+    metnavArrow.style.transform = `translate3d(${activeNavPos - 8}px,0,0)`;
   });
   // };
   // meteringNavigation();
@@ -369,8 +348,6 @@ const Structure = () => {
     });
 
     menuItems.forEach((item) => {
-      // console.log(item.innerHTML);
-      // console.log(item.innerText);
       if (
         item.innerText.toLowerCase() == namespace ||
         item.innerHTML.toLocaleLowerCase() == namespace
@@ -397,13 +374,6 @@ const Structure = () => {
 
         const windowHeight = navigateButton.scrollHeight / 2;
         const posY = e.offsetY - windowHeight;
-        // console.log(posX);
-        // navigateButtonsBg[idx].style = `transform : translate(${posX / 10}px, ${
-        //   posY / 2
-        // }px)`;
-        // navigateButton.style = `transform : translate(${
-        //   -(navigateButton.scrollWidth / 2) + posX / 3
-        // }px,${posY}px)`;
 
         gsap.to(navigateButtonsBg[idx], 1, {
           x: posX / 5,
@@ -418,9 +388,6 @@ const Structure = () => {
       });
 
       navigateButton.addEventListener('mouseleave', () => {
-        // navigateButtonsBg[idx].style = '';
-        // navigateButton.style = '';
-
         gsap.to(navigateButtonsBg[idx], 1, {
           x: 0,
           y: 0,
@@ -684,7 +651,7 @@ const Structure = () => {
         beforeLeave() {},
         leave(data) {
           animateFadeActivityToDetail();
-        //   console.log('BEFORE');
+          //   console.log('BEFORE');
           return gsap.to(data.current.container, {
             delay: 0.5,
           });
