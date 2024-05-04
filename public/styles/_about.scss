@@ -1,0 +1,185 @@
+#about {
+    overflow: hidden;
+
+
+    .p1 {
+        height: 100vh;
+        /* background-color: #C0C0C0; */
+        position: relative;
+
+        .c-logo {
+            position: absolute;
+            right: 15%;
+            top: 20%;
+            animation-name: AnimateInFadeUp;
+            animation-duration: 3s;
+            animation-fill-mode: both;
+            animation-delay: 1.3s;
+        }
+
+
+        .born {
+            position: absolute;
+            top: 60%;
+            left: 40%;
+
+            %animate {
+                animation-name: AnimateInFadeUp;
+                animation-duration: 2s;
+                animation-fill-mode: both;
+                animation-delay: 1.5s;
+            }
+
+            h1 {
+                font-size: 64px;
+                font-weight: 300;
+                color: #fc973b;
+                @extend %animate
+            }
+
+            p {
+                @extend %animate;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .c-logo {
+                top: 35%;
+            }
+
+            .born {
+                left: 15%;
+            }
+        }
+    }
+
+    .p2 {
+        height: 90vh;
+        min-height: 650px;
+        position: relative;
+        /* background-color: #3B3B3B; */
+        /* animation-name: AnimateFadeIn;
+        animation-duration: 2s;
+        animation-fill-mode: both;
+        animation-delay: 2s; */
+
+        .bg-gpret {
+            position: absolute;
+            /* background-color: #FC973B; */
+            top: 0%;
+            left: 22%;
+            font-size: 400px;
+            color: #1e1e1e;
+            opacity: 0.5;
+            font-weight: 800;
+            text-wrap: nowrap;
+        }
+
+        .desc {
+            max-width: 350px;
+            position: absolute;
+            top: -5%;
+            left: 18%;
+            font-size: 24px;
+            animation-name: AnimateFadeIn;
+            animation-duration: 2s;
+            animation-fill-mode: both;
+            animation-delay: 2s;
+
+            &::before {
+                content: '';
+                width: 40px;
+                height: 40px;
+                border: 1px solid white;
+                display: block;
+                position: absolute;
+                transform: translate(-100%, -100%);
+            }
+
+            span {
+                color: #fc973b;
+            }
+        }
+
+        .vm {
+            position: absolute;
+            right: 13%;
+            top: 33%;
+            display: flex;
+            flex-direction: column;
+            gap: 150px;
+            /* padding-bottom: 300px; */
+            /* transform: translateY(200px); */
+            animation-name: AnimateFadeIn;
+            animation-duration: 3s;
+            animation-fill-mode: both;
+            animation-delay: 2.5s;
+
+
+            td:nth-child(1) {
+                width: 300px;
+                background-color: #222222;
+            }
+
+            div {
+                display: flex;
+                /* gap: 7vw; */
+            }
+
+            h1 {
+                font-size: 96px;
+                line-height: 80px;
+                color: transparent;
+                width: 15vw;
+                -webkit-text-stroke: 2px #fc973b;
+                text-stroke: 2px #fc973b;
+            }
+
+            p {
+                font-size: 24px;
+                max-width: 400px;
+            }
+        }
+    }
+
+    .star {
+        &>div {
+            position: absolute;
+            bottom: 10%;
+            left: 20%;
+            animation-name: rotation;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            /* background-color: antiquewhite; */
+            width: 150px;
+            aspect-ratio: 1/1;
+            transform: translateX(65px);
+        }
+
+        span {
+            display: block;
+            width: 20px;
+            height: 100%;
+            background-color: #fc973b;
+            position: absolute;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .p2 {
+            height: 110vh;
+
+            .desc {
+                left: 15%;
+                padding-right: 20px;
+            }
+
+            .star>div {
+                scale: 0.5;
+                bottom: 0;
+            }
+        }
+
+    }
+
+}

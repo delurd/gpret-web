@@ -1,0 +1,350 @@
+.load-home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1e1e1e;
+    z-index: 400;
+    animation-name: loadSwipeUp;
+    animation-duration: 1.5s;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.95, 0.05, 0.9, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .center {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: calc(50% - 50px);
+        z-index: 1;
+    }
+
+    &>div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+
+        .img {
+            position: relative;
+            height: 70px;
+            width: 70px;
+
+            img {
+                position: absolute;
+                right: 0px;
+                height: 70px;
+                scale: 1;
+                filter: blur(0px);
+                animation-name: AnimateLogoIn;
+                animation-duration: 1.5s;
+                animation-delay: 0.5s;
+                animation-fill-mode: both;
+                animation-timing-function: cubic-bezier(0.03, 0.98, 0.52, 0.99);
+            }
+        }
+
+        .tagline {
+            width: 140px;
+            height: 80px;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to left, black 100%, transparent);
+            mask-image: linear-gradient(to left, black 100%, transparent);
+
+            h1 {
+                position: absolute;
+                left: -10px;
+                font-weight: bold;
+                animation-name: AnimateTagIn;
+                animation-duration: 0.8s;
+                animation-fill-mode: both;
+                animation-timing-function: cubic-bezier(0.03, 0.98, 0.52, 0.99);
+                animation-delay: 1s;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+
+}
+
+@keyframes AnimateTagIn {
+    0% {
+        left: -100px;
+        opacity: 0;
+        -webkit-mask-image: linear-gradient(to left, black, transparent 95%);
+        mask-image: linear-gradient(to left, black, transparent 95%);
+    }
+
+    100% {
+        left: 10px;
+        opacity: 1;
+        -webkit-mask-image: linear-gradient(to left, black 100%, transparent 100%);
+        mask-image: linear-gradient(to left, black 100%, transparent 100%);
+    }
+}
+
+@keyframes AnimateLogoIn {
+    0% {
+        right: -67px;
+        filter: blur(1px);
+        opacity: 0;
+        scale: 50;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        filter: blur(0px);
+        opacity: 1;
+        scale: 1;
+
+    }
+
+    100% {
+
+        right: 0;
+    }
+}
+
+#home {
+    height: 100dvh;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    /* background-color: #FC973B; */
+
+    .back-title {
+        font-size: 540px;
+        text-align: center;
+        color: #3E3E3E;
+        text-wrap: nowrap;
+        // color: transparent;
+        // font-family: Helvetica, sans-serif;
+        // -webkit-text-stroke: 23px #242424;
+        // text-stroke: 23px #242424;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 2s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+        animation-name: AnimateFadeInHome;
+        animation-duration: 2s;
+        animation-fill-mode: backwards;
+        animation-delay: 1s;
+    }
+
+
+    .title {
+        text-align: center;
+        font-size: 98px;
+        font-weight: 300;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        color: #FC973B;
+        transition: all 1.5s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+        animation-name: AnimateFadeInHome;
+        animation-duration: 2s;
+        animation-fill-mode: backwards;
+        animation-delay: 1.2s;
+    }
+
+
+    .content-card {
+        /* background-color: #D9D9D9; */
+        background-image: linear-gradient(#D9D9D9, #ACACAC);
+        color: #101010;
+        padding: 30px 30px 0px 30px;
+        height: 80%;
+        position: absolute;
+        bottom: -50%;
+        width: 90%;
+        left: 50%;
+        transform: translate(-50%, 0vh);
+        box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
+        transition: all 1s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        animation-name: AnimateFadeCardHome;
+        animation-duration: 2s;
+        animation-fill-mode: backwards;
+        animation-delay: 1.5s;
+        z-index: 2;
+
+        .c-1 {
+            flex: 1;
+            width: 100%;
+            min-width: 1000px;
+            aspect-ratio: 1/1;
+            border-radius: 100%;
+            display: block;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* overflow: hidden; */
+            /* background-color: #BFBFBF; */
+            background-image: linear-gradient(#BFBFBF, #595959);
+        }
+
+        .char {
+            /* background-color: #FC973B; */
+            /* height: 100%; */
+            width: 50%;
+            min-width: 400px;
+            /* max-width: 800px; */
+            aspect-ratio: 1/1;
+            position: absolute;
+            top: -5%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            /* background-color: red; */
+            background-image: url("/images/back.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: 50% 100%;
+            filter: grayscale(100%);
+            transition: all 1.5s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+        }
+
+        .c-2 {
+            width: 150%;
+            aspect-ratio: 1/1;
+            border-radius: 100%;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, 100px);
+            /* opacity: 0; */
+            /* background-color: white; */
+            transition: all 2s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+            background-image: linear-gradient(#BFBFBF 10%, #595959 80%);
+        }
+    }
+
+    .capture>span {
+        position: fixed;
+    }
+
+
+    .focus-rect {
+        z-index: 5;
+        width: 50px;
+        height: 50px;
+        border: 1px solid white;
+        position: absolute;
+        right: 15%;
+        top: 20%;
+        transition: all 3s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+    }
+
+    .star {
+
+        &>div {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            animation-name: rotation;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-delay: 1.5s;
+            /* background-color: antiquewhite; */
+            width: 40px;
+            height: 40px;
+            transform: translateX(18px);
+            z-index: 5;
+        }
+
+        span {
+            display: block;
+            width: 4px;
+            height: 40px;
+            background-color: #FC973B;
+            position: absolute;
+        }
+    }
+
+    .navigate-button {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: 0;
+    }
+
+
+    @media screen and (max-width: 1080px) {
+        .content-card .char {
+            top: 15%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .back-title {
+            left: 0%;
+            transform: translateX(0%);
+        }
+
+        .title {
+            top: 30%;
+            font-size: 48px;
+        }
+
+        .star>div {
+            left: 25%;
+        }
+
+        footer {
+            .cr {
+                bottom: 40dvh;
+
+                &>p {
+                    display: none;
+                }
+
+                &>div {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes AnimateFadeCardHome {
+    from {
+        bottom: -100%;
+        opacity: 0;
+    }
+
+    to {}
+}
+
+
+@keyframes AnimateFadeInHome {
+    from {
+        transform: translate(-50%, 50%);
+        opacity: 0;
+    }
+
+    to {}
+}

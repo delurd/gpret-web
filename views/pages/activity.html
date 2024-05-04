@@ -1,0 +1,95 @@
+<main data-barba="container" data-barba-namespace="activity">
+    <div class="nav-logo">
+        <a class="nav-icon with-cptr" href="/"></a>
+        <p class="nav-tag">Photos<br />Grapho</p>
+    </div>
+    <div class="load">
+        <div>
+            <h1>ACTIVITY</h1>
+        </div>
+    </div>
+    <section id="activity" class="bg-circle-dark">
+        <header class="pg-header">
+            <h1 class="bg-title">ACTIVITY
+                <h1 class="title" data-scroll="10">ACTIVITY</h1>
+            </h1>
+        </header>
+        <div class="p1">
+            <% data.forEach((activity,idx)=> { %>
+                <div class="ac-item">
+                    <% if(idx%2){ %>
+                        <div class="ac-content r">
+                            <% }else{ %>
+                                <div class="ac-content">
+                                    <% } %>
+                                        <div class="content-l">
+                                            <div class="ac-img">
+                                                <div class="ac-img-wrap">
+                                                    <img data-scroll="15" src="/images<%= activity.images[0] %>" alt="">
+                                                </div>
+                                            </div>
+                                            <h1 class="ac-title" data-scroll="-8">
+                                                <%= activity.title %>
+                                            </h1>
+                                        </div>
+                                        <div class="content-r">
+                                            <p class="ac-desc">
+                                                <%= activity.desc %>
+                                            </p>
+                                            <!-- <a class="ac-btn"> -->
+                                                <a href="/activity/<%= activity.url %>" class="ac-btn">
+                                                <div class="ac-btn-bg"></div>
+                                                <svg width="46" height="15" viewBox="0 0 46 15" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g>
+                                                        <path d=" M36 1L43.5 7.5L36 14" stroke="currentColor"
+                                                            stroke-width="2" />
+                                                        <path d="M0 7.5H43.5" stroke="currentColor" stroke-width="2" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                </div>
+                        </div>
+                        <% }) %>
+                            <div class="container-detail">
+                                <div class="img-container"></div>
+                                <div class="img-wrap">
+                                    <img src="" alt="">
+                                </div>
+                                <h1 class="title"></h1>
+                                <p class="desc">
+                                </p>
+                            </div>
+                </div>
+                <footer>
+                    <div class="navigate-button nb-dark nb-back">
+                        <span></span>
+                        <p>
+                            <a href="/">
+                                <svg width="46" height="15" viewBox="0 0 46 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="rotate(180 22.7 7.5)">
+                                        <path d=" M36 1L43.5 7.5L36 14" stroke="currentColor" stroke-width="2" />
+                                        <path d="M0 7.5H43.5" stroke="currentColor" stroke-width="2" />
+                                    </g>
+                                </svg>
+                                HOME
+                            </a>
+                        </p>
+                    </div>
+                    <div class="capture">
+                        <span class="bl"></span>
+                        <span class="br"></span>
+                    </div>
+                    <div class="cr">
+                        <p>© Copyright</p>
+                        <div>
+                            <a href="https://instagram.com/gpret_umg" target="_blank" class="ig with-cptr"></a>
+                            <a href="https://tiktok.com/@gpret_umg" target="_blank" class="tt with-cptr"></a>
+                            <a href="https://youtube.com/@g-pretumg" target="_blank" class="yt with-cptr"></a>
+                        </div>
+                    </div>
+                </footer>
+    </section>
+</main>
