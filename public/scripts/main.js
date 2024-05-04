@@ -455,7 +455,7 @@ const Structure = () => {
   });
 
   const initScrollFollow = () => {
-    console.log('SCROLL FOLLOW');
+    // console.log('SCROLL FOLLOW');
     scrollFollowItems = document.querySelectorAll('[data-scroll]');
     //NEED TO GET INITIAL GETBOUNDREACT OUT OF SCROLL EVENT
     let _scrollFollowItemsBoundClientRect = [];
@@ -516,12 +516,12 @@ const Structure = () => {
   };
 
   const animateFadeActivityToDetail = () => {
-    console.log('FADE TO DETAIL');
+    // console.log('FADE TO DETAIL');
     const linkButtons = document.querySelectorAll('#activity .ac-btn');
 
     linkButtons.forEach((item) => {
       item.addEventListener('click', (e) => {
-        console.log('lcik');
+        // console.log('lcik');
         const parentContent =
           e.target.parentElement.parentElement.parentElement;
         const title = parentContent.querySelector('.ac-title');
@@ -684,7 +684,7 @@ const Structure = () => {
         beforeLeave() {},
         leave(data) {
           animateFadeActivityToDetail();
-          console.log('BEFORE');
+        //   console.log('BEFORE');
           return gsap.to(data.current.container, {
             delay: 0.5,
           });
