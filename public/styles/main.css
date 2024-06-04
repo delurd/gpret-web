@@ -870,7 +870,7 @@ footer .cr .yt::after {
   font-size: 540px;
   text-align: center;
   color: #3E3E3E;
-  text-wrap: nowrap;
+  white-space: nowrap;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -1113,7 +1113,7 @@ footer .cr .yt::after {
   color: #1e1e1e;
   opacity: 0.5;
   font-weight: 800;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 #about .p2 .desc {
   max-width: 350px;
@@ -1460,7 +1460,7 @@ footer .cr .yt::after {
 #activity .p1 .container-detail {
   position: fixed;
   z-index: 10;
-  content-visibility: hidden;
+  visibility: hidden;
 }
 #activity .p1 .container-detail .img-container {
   position: fixed;

@@ -513,7 +513,7 @@ const Structure = () => {
         // console.log();
 
         gsap.set(parentContent, {opacity: 0});
-        gsap.set('.container-detail', {'content-visibility': 'visible'});
+        gsap.set('.container-detail', {'visibility': 'visible'});
         gsap.from('.container-detail .title', 1, {
           left: titleRect.x,
           top: titleRect.y,
