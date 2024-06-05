@@ -1,7 +1,9 @@
-import Structure from '/scripts/structure.js';
-import Home from '/scripts/home.js';
-import Activity from '/scripts/activity.js';
-import Contact from '/scripts/contact.js';
+import '../styles/main.css';
+
+import Structure from './structure.js';
+import Home from './home.js';
+import Activity from './activity.js';
+import Contact from './contact.js';
 
 (() => {
   gsap.registerPlugin(CustomEase);

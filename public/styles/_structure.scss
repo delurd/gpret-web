@@ -1,0 +1,146 @@
+#structure {
+    header {
+        height: 600px;
+    }
+
+
+    .p1 {
+        /* position: relative;
+        height: auto; */
+        /* background-color: antiquewhite; */
+
+        .container {
+            position: relative;
+            /* top: 600px;
+            left: 50%;
+            transform: translateX(-50%); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("/images/Logo_G_50.png");
+            background-size: 80%;
+            background-position: 50% 40%;
+            background-repeat: no-repeat;
+            /* background-color: #fc973b; */
+            animation-name: AnimateInFadeUp;
+            animation-duration: 2s;
+            animation-fill-mode: both;
+            animation-delay: 1.5s;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 50px;
+
+            .profile-card {
+                position: relative;
+                width: 17vw;
+                aspect-ratio: 1/1;
+                /* background-color: white; */
+
+            }
+
+            &.structure {
+                .profile-card {
+                    background-image: url("/images/front_2.png"), linear-gradient(#D9D9D9 -10%, black);
+                    background-repeat: no-repeat, no-repeat;
+                    background-position: 50% 100%, 0% 0%;
+                    background-size: 90%, 100%;
+                    border-radius: 40%;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-image: url("/images/front_2.png"), linear-gradient(#D9D9D9 100%, black);
+                        /* background-size: 100%, 100%;
+                    background-position: 50% 90%, 0% 0%; */
+                        border-radius: 0;
+                    }
+
+                    h1 {
+                        /* display: block; */
+                        font-size: 2vw;
+                        line-height: 1.7vw;
+                        position: absolute;
+                        bottom: 20%;
+                        z-index: 5;
+                        color: #fc973b;
+                        font-weight: 600;
+                        font-style: italic;
+                        max-width: 90%;
+                    }
+
+                    .acs {
+                        span {
+                            display: block;
+                            width: clamp(5px, 1vw, 15px);
+                            height: clamp(5px, 1vw, 15px);
+                            position: absolute;
+
+                            &:nth-child(1) {
+                                border-top: clamp(0.3px, 0.3vw, 5px) solid white;
+                                border-left: clamp(0.3px, 0.3vw, 5px) solid white;
+                                left: -0.6vw;
+                                top: -0.6vw;
+                            }
+
+                            &:nth-child(2) {
+                                border-bottom: clamp(0.3px, 0.3vw, 5px) solid white;
+                                border-left: clamp(0.3px, 0.3vw, 5px) solid white;
+                                left: -0.6vw;
+                                bottom: -0.6vw;
+                            }
+
+                            &:nth-child(3) {
+                                border-top: clamp(0.3px, 0.3vw, 5px) solid white;
+                                border-right: clamp(0.3px, 0.3vw, 5px) solid white;
+                                right: -0.6vw;
+                                top: -0.6vw;
+                            }
+
+                            &:nth-child(4) {
+                                border-bottom: clamp(0.3px, 0.3vw, 5px) solid white;
+                                border-right: clamp(0.3px, 0.3vw, 5px) solid white;
+                                right: -0.6vw;
+                                bottom: -0.6vw;
+                            }
+                        }
+                    }
+                }
+
+                tr:nth-child(5) .profile-card {
+                    background-image: url("/images/front_2.png"), url("/images/front_2.png"), url("/images/front_2.png"), linear-gradient(#D9D9D9 -10%, black);
+                    background-repeat: no-repeat, no-repeat, no-repeat;
+                    background-position: 145% 120%, -35% 120%, 50% -100%, 0% 0%;
+                    background-size: 80%, 70%, 90%, 100%;
+                    border-radius: 40%;
+                    transition: 0.3s;
+                }
+
+                tr:nth-child(5) .profile-card:hover {
+                    background-image: url("/images/front_2.png"), url("/images/front_2.png"), url("/images/front_2.png"), linear-gradient(#D9D9D9 100%, black);
+                    border-radius: 0;
+                }
+
+                td {
+                    border-bottom: 1px solid transparent;
+                    border-right: 1px solid transparent;
+                }
+            }
+
+            &.grid td {
+                border-bottom: 1px solid white;
+                border-right: 1px solid white;
+                /* background-color: aliceblue; */
+            }
+
+
+            td:nth-child(5) {
+                border-right: none;
+            }
+
+            tr:nth-child(5) td {
+                border-bottom: none;
+            }
+        }
+    }
+}
