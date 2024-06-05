@@ -1,9 +1,10 @@
-import '../styles/main.css';
-
 import Structure from './structure.js';
 import Home from './home.js';
 import Activity from './activity.js';
 import Contact from './contact.js';
+
+import './gsap.min.js';
+import '../styles/main.css';
 
 (() => {
   gsap.registerPlugin(CustomEase);
@@ -30,8 +31,12 @@ import Contact from './contact.js';
 
   ////NAVIGATION
   // const meteringNavigation = () => {
-  const metnavItems = document.querySelectorAll('.metnav-item');
-  const metnavTitle = document.querySelector('.metnav-title');
+  const metnavItems = document.querySelectorAll('.metnav-item'),
+    metnavTitle = document.querySelector('.metnav-title'),
+    metnavContainer = document.querySelector('.metering-nav'),
+    metnavArrow = document.querySelector('.metnav-arrow');
+
+  let activeNavPos = 0;
 
   const getActiveNavPos = () => {
     let posX = 0;
@@ -39,7 +44,15 @@ import Contact from './contact.js';
       if (item.classList.contains('active')) posX = item.offsetLeft;
     });
 
+    activeNavPos = posX;
     return posX;
+  };
+
+  const animateMetteringArrow = (e) => {
+    const metnavContainerWidth = metnavContainer.scrollWidth;
+    const cursorPos = e.layerX + metnavContainerWidth / 2;
+
+    metnavArrow.style.transform = `translate3d(${cursorPos - 8}px,0,0)`;
   };
 
   metnavItems.forEach((item) => {
@@ -49,40 +62,21 @@ import Contact from './contact.js';
       });
 
       item.classList.add('active');
-
-      getActiveNavPos();
     });
 
     item.addEventListener('mouseover', () => {
       item.style = `max-width: ${item.scrollWidth}px`;
-
-      // const getItemValue = item.childNodes[0].childNodes[0].nodeValue
-      // metnavTitle.childNodes[0] && metnavTitle.childNodes[0].remove()
-      // metnavTitle.append(getItemValue)
     });
 
     item.addEventListener('mouseleave', () => {
       item.style = '';
-
-      // metnavTitle.childNodes[0] && metnavTitle.childNodes[0].remove()
     });
   });
 
-  const metnavContainer = document.querySelector('.metering-nav');
-  const metnavArrow = document.querySelector('.metnav-arrow');
-  metnavArrow.style = `transform: translate3d(${
-    getActiveNavPos() - 8
-  }px,0,0); opacity: 1`;
-
-  metnavContainer.addEventListener('mousemove', (e) => {
-    const metnavContainerWidth = metnavContainer.scrollWidth;
-    const cursorPos = e.layerX + metnavContainerWidth / 2;
-    // console.log();
-    metnavArrow.style.transform = `translate3d(${cursorPos - 8}px,0,0)`;
-  });
+  metnavContainer.addEventListener('mousemove', animateMetteringArrow);
 
   metnavContainer.addEventListener('mouseleave', () => {
-    metnavArrow.style.transform = `translate3d(${getActiveNavPos() - 8}px,0,0)`;
+    metnavArrow.style.transform = `translate3d(${activeNavPos - 8}px,0,0)`;
   });
   // };
   // meteringNavigation();
@@ -124,8 +118,6 @@ import Contact from './contact.js';
     });
 
     menuItems.forEach((item) => {
-      // console.log(item.innerHTML);
-      // console.log(item.innerText);
       if (
         item.innerText.toLowerCase() == namespace ||
         item.innerHTML.toLocaleLowerCase() == namespace
@@ -152,13 +144,6 @@ import Contact from './contact.js';
 
         const windowHeight = navigateButton.scrollHeight / 2;
         const posY = e.offsetY - windowHeight;
-        // console.log(posX);
-        // navigateButtonsBg[idx].style = `transform : translate(${posX / 10}px, ${
-        //   posY / 2
-        // }px)`;
-        // navigateButton.style = `transform : translate(${
-        //   -(navigateButton.scrollWidth / 2) + posX / 3
-        // }px,${posY}px)`;
 
         gsap.to(navigateButtonsBg[idx], 1, {
           x: posX / 5,
@@ -173,9 +158,6 @@ import Contact from './contact.js';
       });
 
       navigateButton.addEventListener('mouseleave', () => {
-        // navigateButtonsBg[idx].style = '';
-        // navigateButton.style = '';
-
         gsap.to(navigateButtonsBg[idx], 1, {
           x: 0,
           y: 0,
@@ -210,7 +192,7 @@ import Contact from './contact.js';
   });
 
   const initScrollFollow = () => {
-    console.log('SCROLL FOLLOW');
+    // console.log('SCROLL FOLLOW');
     scrollFollowItems = document.querySelectorAll('[data-scroll]');
     //NEED TO GET INITIAL GETBOUNDREACT OUT OF SCROLL EVENT
     let _scrollFollowItemsBoundClientRect = [];
@@ -271,12 +253,12 @@ import Contact from './contact.js';
   };
 
   const animateFadeActivityToDetail = () => {
-    console.log('FADE TO DETAIL');
+    // console.log('FADE TO DETAIL');
     const linkButtons = document.querySelectorAll('#activity .ac-btn');
 
     linkButtons.forEach((item) => {
       item.addEventListener('click', (e) => {
-        console.log('lcik');
+        // console.log('lcik');
         const parentContent =
           e.target.parentElement.parentElement.parentElement;
         const title = parentContent.querySelector('.ac-title');
@@ -301,7 +283,7 @@ import Contact from './contact.js';
         // console.log();
 
         gsap.set(parentContent, {opacity: 0});
-        gsap.set('.container-detail', {'content-visibility': 'visible'});
+        gsap.set('.container-detail', {visibility: 'visible'});
         gsap.from('.container-detail .title', 1, {
           left: titleRect.x,
           top: titleRect.y,
@@ -439,7 +421,7 @@ import Contact from './contact.js';
         beforeLeave() {},
         leave(data) {
           animateFadeActivityToDetail();
-          console.log('BEFORE');
+          //   console.log('BEFORE');
           return gsap.to(data.current.container, {
             delay: 0.5,
           });

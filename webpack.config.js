@@ -4,16 +4,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './public/scripts/index.js',
-  // entry: {
-  //   script: {
-  //     import: './assets/scripts/index.js',
-  //     //   filename: 'scripts/index.js',
-  //   },
-  // },
+  entry: './assets/scripts/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'public/production/assets'),
+    path: path.resolve(__dirname, 'public/assets'),
     clean: true,
   },
   module: {
@@ -32,6 +26,8 @@ module.exports = {
       },
     ],
   },
-
+  optimization: {
+    minimizer: [`...`, new CssMinimizerPlugin()],
+  },
   plugins: [new MiniCssExtractPlugin()],
 };

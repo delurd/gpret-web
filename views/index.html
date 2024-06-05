@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/x-icon" href="/icons/favicon/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -74,16 +74,15 @@
 
     <%- include('pages/'+route+'.html') %>
 
-        <script src="/scripts/gsap.min.js"></script>
+        <%# <script src="/scripts/gsap.min.js"></script> %>
         <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
         <script src="https://unpkg.com/@barba/core"></script>
-        <script type="module" src="/scripts/main.js"></script>
-        <script>
-        </script>
+        <script type="module" src="/assets/main.js"></script>
 </body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ6CP9BS"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ6CP9BS" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 </html>
